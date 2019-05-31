@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Starting with a Really Simple C++ Project &mdash; Sphinx Test  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a class="site-nav-toggle hidden-lg-up"><i class="icon-menu"></i></a>
+            <a class="site-title" href="index.html">
+                Sphinx Test
+            </a>
+        </div>
+    </header>
+
+
+<div class="breadcrumbs-outer hidden-xs-down">
+    <div class="container">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="breadcrumbs">
+    
+      <li><a href="index.html">Docs</a></li>
+        
+      <li>Starting with a Really Simple C++ Project</li>
+    
+    
+      <li class="breadcrumbs-aside">
+        
+            
+            <a href="_sources/start_simple_project.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+</div>
+    </div>
+</div>
+    <div class="main-outer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 site-nav">
+                    
+<div role="search">
+    <form class="search" action="search.html" method="get">
+        <div class="icon-input">
+            <input type="text" name="q" placeholder="Search" />
+            <span class="icon-search"></span>
+        </div>
+        <input type="submit" value="Go" class="d-hidden" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+                    <div class="site-nav-tree">
+                        
+                            
+                            
+                                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Test for Markdown</a></li>
+</ul>
+
+                            
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9">
+                    <div class="document">
+                        
+                            
+  <div class="section" id="starting-with-a-really-simple-c-project">
+<h1>Starting with a Really Simple C++ Project<a class="headerlink" href="#starting-with-a-really-simple-c-project" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Create a folder <code class="docutils literal notranslate"><span class="pre">&lt;project&gt;</span></code> with the name of your project and initialize <code class="docutils literal notranslate"><span class="pre">git</span></code></p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">git</span> <span class="n">init</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Start with <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-whitelisting</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    *
+    !*.cc
+    !*.h
+    !CMakeLists.txt
+    !README.md
+    !.gitignore
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Create a file <code class="docutils literal notranslate"><span class="pre">README.md</span></code> and write down most important informations about your project.</p></li>
+<li><p>For directly testing the source code create the file <code class="docutils literal notranslate"><span class="pre">doctest_main.cc</span></code></p></li>
+</ol>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>    <span class="cp">#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN</span>
+    <span class="cp">#include</span> <span class="cpf">&lt;doctest/doctest.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Create a C++ source file with the name <code class="docutils literal notranslate"><span class="pre">&lt;code&gt;.cc</span></code> to write the actual code</p></li>
+</ol>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>    <span class="cp">#include</span> <span class="cpf">&lt;doctest/doctest.h&gt;</span><span class="cp"></span>
+
+    <span class="c1">// STL includes</span>
+    <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+    <span class="c1">// custom includes</span>
+
+    <span class="c1">// namespace directives and declarations</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+    <span class="c1">// actual code</span>
+
+    <span class="c1">// test cases to test the actual code</span>
+    <span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">){</span>
+        <span class="c1">// your checks and requirements</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Create the file <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> for building the code</p></li>
+</ol>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span>    <span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">3.10</span><span class="p">)</span>
+    <span class="nb">project</span><span class="p">(</span><span class="s">&lt;project&gt;</span> <span class="s">VERSION</span> <span class="s">0.1.0</span> <span class="s">LANGUAGES</span> <span class="s">CXX</span><span class="p">)</span>
+    <span class="nb">enable_testing</span><span class="p">()</span>
+
+    <span class="nb">find_package</span><span class="p">(</span><span class="s">doctest</span> <span class="s">REQUIRED</span><span class="p">)</span>
+
+    <span class="nb">add_executable</span><span class="p">(</span><span class="s">main_test</span>
+        <span class="s">doctest_main.cc</span>
+        <span class="s">&lt;code&gt;.cc</span>
+    <span class="p">)</span>
+
+    <span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">main_test</span>
+        <span class="s">PRIVATE</span>
+            <span class="s">doctest::doctest</span>
+    <span class="p">)</span>
+
+    <span class="nb">add_test</span><span class="p">(</span><span class="s">main_test</span> <span class="s">main_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Create a GitHub repository for your project, make the initial commit and push it to the master branch</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+    <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Initial commit&quot;</span>
+    <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;/&lt;</span><span class="n">project</span><span class="o">&gt;.</span><span class="n">git</span>
+    <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Initialize the build process</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">mkdir</span> <span class="n">build</span> 
+    <span class="n">cd</span> <span class="n">build</span>
+    <span class="n">cmake</span> <span class="o">..</span>
+</pre></div>
+</div>
+<ol>
+<li><p>Use test-driven development cycle to write, test and commit new code</p>
+<ol class="simple">
+<li><p>Write test</p></li>
+<li><p>Make sure building or testing fails</p></li>
+<li><p>Write least simple code for a successful building and testing</p></li>
+<li><p>Make sure building and testing is successful.</p></li>
+<li><p>Commit the changes.</p></li>
+<li><p>Refactor the code for better design.</p></li>
+<li><p>Make sure building and testing is successful.</p></li>
+<li><p>Commit the changes.</p></li>
+</ol>
+<p>Building and Testing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">cmake</span> <span class="o">--</span><span class="n">build</span> <span class="o">.</span>
+    <span class="n">ctest</span> <span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+    <div class="footer" role="contentinfo">
+        <div class="container">
+            &#169; Copyright 2019, Markus Pawellek (markuspawellek@gmail.com).
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+        </div>
+    </div>  
+
+</body>
+</html>
