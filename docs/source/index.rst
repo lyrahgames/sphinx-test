@@ -10,6 +10,7 @@ Welcome to Sphinx Test's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   start_simple_project
    test
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
